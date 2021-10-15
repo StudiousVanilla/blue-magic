@@ -6,7 +6,7 @@ const Layout = () => {
 
 
     return ( 
-        <main className="flex flex-col h-full">
+        <main className="flex flex-col h-screen">
             <Header/>
             <NumberGenerator/>
             <Footer/>

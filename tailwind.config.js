@@ -8,6 +8,10 @@ module.exports = {
         'leinster-navy' : '#013a81',
         'leinster-gold' : '#eeb111',
         'leinster-grey' : '#9fa1a4',
+      },
+      fontFamily:{
+        body:  ['"Libre Franklin"'],
+        jersey:  ["Teko"],
       }
     },
   },
