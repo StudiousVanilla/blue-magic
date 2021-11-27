@@ -4,11 +4,8 @@ import Header from "./Header";
 import NumberGenerator from "./NumberGenerator";
 import Scoring from "./Scoring";
 import LeaderBoard from "./LeaderBoard";
-import { useState } from "react";
 
 const Layout = () => {
-
-    const [names, setNames] = useState([])
 
 
     return ( 
@@ -16,7 +13,7 @@ const Layout = () => {
         <BrowserRouter>
             <Header/>
             <Routes>
-                <Route path="/" element={<NumberGenerator setNames={setNames} names={names}/>}/>
+                <Route path="/" element={<NumberGenerator/>}/>
                 <Route path="/scoring" element={<Scoring/>}/>
                 <Route path="/leaderboard" element={<LeaderBoard/>}/>
             </Routes>
