@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const PlayersDisplay = ({generateNumbers, startingXV, bench}) => {
+const PlayersDisplay = ({generateNumbers, startingXV, bench, setNames, names}) => {
 
-    const [names, setNames] = useState([])
+    // const [names, setNames] = useState([])
 
     const addNames = (name) =>{
 

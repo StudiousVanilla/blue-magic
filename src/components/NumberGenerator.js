@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PlayersDisplay from "./PlayersDisplay";
 
-const NumberGenerator = () => {
+const NumberGenerator = ({setNames, names}) => {
 
     const [startingXV, setStartingXV] = useState([])
     const [bench, setBench] = useState([])
@@ -72,7 +72,9 @@ const NumberGenerator = () => {
     return ( 
 
         <div className="h-full">
-            <PlayersDisplay 
+            <PlayersDisplay
+            names={names} 
+            setNames={setNames}
             generateNumbers={generateNumbers}
             startingXV={startingXV}
             bench={bench}
