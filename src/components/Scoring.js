@@ -2,7 +2,7 @@ const Scoring = () => {
     return ( 
         
         <div className="h-full flex flex-col justify-evenly">
-            <p>Last Tryscorer +4</p>
+            <p className="text-leinster-blue">Last Tryscorer +4</p>
             <p>Tryscorer +3</p>
             <p>Yellow Card -3</p>
             <p>Red Card -4</p>
