@@ -1,23 +1,48 @@
 const Scoring = () => {
-    return ( 
-        
-        <div className="h-full flex flex-col justify-evenly">
-            <p>Last Tryscorer +4</p>
-            <p>Tryscorer +3</p>
-            <p>Yellow Card -3</p>
-            <p>Red Card -4</p>
-            <p>Best Assist +4</p>
-            <p>Kick Success +1</p>
-            <p>Kick Failure -2</p>
-            <p>Offical Man Of the Match +1</p>
-            <p>Nickelodeon Teen Choice Award +1</p>
-            <p>Blue Magic (Unanimous) +4</p>
-            <p>Shit the bed (Majority) -1</p>
-            <p>Drop Goal +2</p>
-            <p>Failed Drop Goal (Adv irrelevant) -2</p>
-        </div>
+  return (
+    <div className="h-full flex flex-wrap justify-evenly pt-10 px-4 bg-leinster-blue">
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Tryscorer <span className="text-leinster-gold">+3</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Last Tryscorer <span className="text-leinster-gold">+4</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Kick Success <span className="text-leinster-gold">+1</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Kick Failure <span className="text-leinster-gold">-2</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Drop Goal <span className="text-leinster-gold">+2</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Failed Drop Goal<span className="text-leinster-gold">-2</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Best Assist <span className="text-leinster-gold">+4</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Shit the bed <span className="text-leinster-gold">-1</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Yellow Card <span className="text-leinster-gold">-3</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Red Card <span className="text-leinster-gold">-4</span>
+      </p>
+      <p className="w-full text-white font-jersey text-2xl uppercase">
+        Offical Man Of the Match <span className="text-leinster-gold">+1</span>
+      </p>
+      <p className="w-full text-white font-jersey text-2xl uppercase">
+        Nickelodeon Teen Choice Award{' '}
+        <span className="text-leinster-gold">+1</span>
+      </p>
+      <p className="w-1/2 text-white font-jersey text-2xl uppercase">
+        Blue Magic <span className="text-leinster-gold">+4</span>
+      </p>
+    </div>
+  );
+};
 
-     );
-}
- 
 export default Scoring;
