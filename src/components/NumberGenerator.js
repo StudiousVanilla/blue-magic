@@ -72,7 +72,7 @@ const NumberGenerator = () => {
     return ( 
 
         <div className="h-full">
-            <PlayersDisplay 
+            <PlayersDisplay
             generateNumbers={generateNumbers}
             startingXV={startingXV}
             bench={bench}

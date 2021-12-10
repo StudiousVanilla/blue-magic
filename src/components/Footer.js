@@ -17,7 +17,7 @@ const Footer = () => {
     }
 
   return (
-    <footer className="h-1/10 flex justify-center items-center bg-leinster-blue">
+    <footer className="h-1/10 flex justify-center items-center bg-leinster-blue border-t-2 border-white">
       <div className="w-full flex justify-evenly items-center">
           <div className="w-full flex flex-col justify-center items-center mt-1 mb-1">
             <Link to="/">
