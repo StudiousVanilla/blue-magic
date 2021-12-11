@@ -18,6 +18,11 @@ firebase.initializeApp({
 const firestore = firebase.firestore();
 
 const LeaderBoard = () => {
+
+  const scoresRef = firestore.collection('scores');
+  const query = scoresRef.orderBy('points', 'desc');
+  const [scores] = useCollectionData(query, { idField: 'id' });
+
   const [pointsUpdate, setPointsUpdate] = useState({
     positive: { Alan: null, Aji: null, Andrew: null, Oisín: null },
     negative: { Alan: null, Aji: null, Andrew: null, Oisín: null },
@@ -43,9 +48,55 @@ const LeaderBoard = () => {
     }));
   };
 
-  const scoresRef = firestore.collection('scores');
-  const query = scoresRef.orderBy('points', 'desc');
-  const [scores] = useCollectionData(query, { idField: 'id' });
+  const updateScores = () =>{
+
+    const ajiObject = scores.filter(obj => {
+      return obj.name === 'Aji'
+    })
+    const alanObject = scores.filter(obj => {
+      return obj.name === 'Alan'
+    })
+    const andrewObject = scores.filter(obj => {
+      return obj.name === 'Andrew'
+    })
+    const oisinObject = scores.filter(obj => {
+      return obj.name === 'Oisín'
+    })
+
+
+    const newAjiScore = ajiObject[0].points+ pointsUpdate.positive.Aji + pointsUpdate.negative.Aji
+
+    const newAlanScore = alanObject[0].points+ pointsUpdate.positive.Alan + pointsUpdate.negative.Alan
+
+    const newAndrewScore = andrewObject[0].points+ pointsUpdate.positive.Andrew + pointsUpdate.negative.Andrew
+
+    const newOisínScore = oisinObject[0].points+ pointsUpdate.positive.Oisín + pointsUpdate.negative.Oisín
+
+
+    console.log(newAjiScore)
+    console.log(newAlanScore)
+    console.log(newAndrewScore)
+    console.log(newOisínScore)
+
+    // update database
+
+    // scoresRef.doc(id).update({
+    //   title: 'zkoder new Tut#1'
+    // });
+
+
+    
+
+
+    setPointsUpdate({
+      positive: { Alan: null, Aji: null, Andrew: null, Oisín: null },
+      negative: { Alan: null, Aji: null, Andrew: null, Oisín: null },
+    })
+
+
+  }
+
+  
 
   return (
     <div className="h-screen flex flex-col justify-evenly items-start">
@@ -117,7 +168,8 @@ const LeaderBoard = () => {
       )}
 
       <div className="h-16 w-full flex justify-center items-center -mt-10">
-        <button className="h-14 w-32 text-2xl rounded-3xl font-body text-white bg-leinster-blue">
+        <button className="h-14 w-32 text-2xl rounded-3xl font-body text-white bg-leinster-blue"
+        onClick={updateScores}>
           Update
         </button>
       </div>
