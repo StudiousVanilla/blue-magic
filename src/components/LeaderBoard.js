@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import { useState } from 'react';
 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
@@ -17,6 +18,31 @@ firebase.initializeApp({
 const firestore = firebase.firestore();
 
 const LeaderBoard = () => {
+  const [pointsUpdate, setPointsUpdate] = useState({
+    positive: { Alan: null, Aji: null, Andrew: null, Oisín: null },
+    negative: { Alan: null, Aji: null, Andrew: null, Oisín: null },
+  });
+
+  const removePoints = (name) => {
+    setPointsUpdate((prevState) => ({
+      ...prevState,
+      negative: {
+        ...prevState.negative,
+        [name]: prevState.negative[name] - 1,
+      },
+    }));
+  };
+
+  const addPoints = (name) => {
+    setPointsUpdate((prevState) => ({
+      ...prevState,
+      positive: {
+        ...prevState.positive,
+        [name]: prevState.positive[name] + 1,
+      },
+    }));
+  };
+
   const scoresRef = firestore.collection('scores');
   const query = scoresRef.orderBy('points', 'desc');
   const [scores] = useCollectionData(query, { idField: 'id' });
@@ -28,14 +54,21 @@ const LeaderBoard = () => {
           {scores.map((score) => (
             <div
               key={score.id}
-              className="w-3/4 flex justify-between items-center flex-wrap mb-8"
+              className="w-4/5 flex justify-between items-center flex-wrap mb-8"
             >
               <span className="w-full mb-4 font-jersey text-5xl text-leinster-blue">
                 {score.name}
               </span>
 
               <div className="w-full flex justify-center items-center">
-                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue">
+                <span className="w-1/6 flex justify-start items-center text-2xl font-body text-red-400">
+                  {pointsUpdate.negative[score.name]}
+                </span>
+
+                <span
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue"
+                  onClick={() => removePoints(score.name)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -46,7 +79,7 @@ const LeaderBoard = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
+                      strokeWidth={3}
                       d="M20 12H4"
                     />
                   </svg>
@@ -56,7 +89,8 @@ const LeaderBoard = () => {
                   {score.points}
                 </span>
 
-                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue"
+                onClick={()=>addPoints(score.name)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -72,6 +106,10 @@ const LeaderBoard = () => {
                     />
                   </svg>
                 </span>
+
+                <span className="w-1/6 flex justify-end items-center text-2xl font-body text-green-400">
+                  {pointsUpdate.positive[score.name]}
+                </span>
               </div>
             </div>
           ))}
@@ -79,7 +117,9 @@ const LeaderBoard = () => {
       )}
 
       <div className="h-16 w-full flex justify-center items-center -mt-10">
-        <button className="h-14 w-32 text-2xl rounded-3xl font-body text-white bg-leinster-blue">Update</button>
+        <button className="h-14 w-32 text-2xl rounded-3xl font-body text-white bg-leinster-blue">
+          Update
+        </button>
       </div>
     </div>
   );
