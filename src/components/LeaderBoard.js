@@ -11,7 +11,7 @@ firebase.initializeApp({
   messagingSenderId: '1037124132738',
   appId: '1:1037124132738:web:12159fd6b77c114de1399b',
   // eslint-disable-next-line
-  measurementId: `${config.measurementId}`,
+  measurementId: '${config.measurementId}',
 });
 
 const firestore = firebase.firestore();
