@@ -21,17 +21,65 @@ const LeaderBoard = () => {
   const [scores] = useCollectionData(query, { idField: 'id' });
 
   return (
-    <div className="h-full flex flex-col justify-evenly items-center">
-      {scores != undefined && (
-        <div className="bg-gray-100 h-4/5 w-2/3 flex flex-col justify-evenly items-center">
+    <div className="h-screen flex flex-col justify-evenly items-start">
+      {scores !== undefined && (
+        <div className="h-4/5 w-full flex flex-col justify-evenly items-center">
           {scores.map((score) => (
-            <div key={score.id} className="w-2/3 flex justify-evenly bg-gray-400">
-                <span className="text-3xl text-leinster-blue">{score.name}</span>
-                <span className="text-3xl text-leinster-blue">{score.points}</span>
+            <div
+              key={score.id}
+              className="w-3/4 flex justify-between items-center flex-wrap mb-8"
+            >
+              <span className="w-full mb-4 font-jersey text-5xl text-leinster-blue">
+                {score.name}
+              </span>
+
+              <div className="w-full flex justify-center items-center">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 12H4"
+                    />
+                  </svg>
+                </span>
+
+                <span className="w-1/2 text-4xl font-body text-leinster-gold">
+                  {score.points}
+                </span>
+
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-leinster-blue">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </span>
+              </div>
             </div>
           ))}
         </div>
       )}
+
+      <div className="h-16 w-full flex justify-center items-center -mt-10">
+        <button className="h-14 w-32 text-2xl rounded-3xl font-body text-white bg-leinster-blue">Update</button>
+      </div>
     </div>
   );
 };
