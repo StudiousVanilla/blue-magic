@@ -10,7 +10,8 @@ firebase.initializeApp({
   storageBucket: 'blue-magic-15014.appspot.com',
   messagingSenderId: '1037124132738',
   appId: '1:1037124132738:web:12159fd6b77c114de1399b',
-  measurementId: '${config.measurementId}',
+  // eslint-disable-next-line
+  measurementId: `${config.measurementId}`,
 });
 
 const firestore = firebase.firestore();
